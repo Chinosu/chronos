@@ -1,0 +1,27 @@
+.center-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10000;
+  color: white;
+  background-color: black;
+  padding-left: 25%;
+  padding-right: 25%;
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+
+  /*border: 1px solid #ccc;*/
+}
+
+.item {
+  text-align: center;
+  padding: 10px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
