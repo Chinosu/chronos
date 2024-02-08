@@ -1,0 +1,8 @@
+li {
+  color: white;
+}
+
+.side-by-side {
+  display: flex;
+  justify-content: space-between;
+}
