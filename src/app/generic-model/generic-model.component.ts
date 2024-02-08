@@ -1,4 +1,14 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, OnDestroy, HostListener} from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+  HostListener,
+  Output, EventEmitter
+} from '@angular/core';
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js";
 import * as THREE from "three";
 
@@ -22,6 +32,8 @@ export class GenericModelComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() public fieldOfView: number = 20;
   @Input('nearClipping') public nearClippingPlane: number = 1;
   @Input('farClipping') public farClippingPlane: number = 1000;
+
+  @Output() modelLoaded: EventEmitter<void> = new EventEmitter<void>();
 
   //? Helper Properties (Private Properties);
   private camera!: THREE.PerspectiveCamera;
@@ -74,6 +86,8 @@ export class GenericModelComponent implements OnInit, AfterViewInit, OnDestroy {
       this.model.scale.set(this.size, this.size, this.size);
       this.model.rotation.x = this.defaultRotationX;
       this.model.rotation.y = this.defaultRotationY;
+
+      this.modelLoaded.emit();
     }, undefined, (error) => {
       console.error(error);
     });

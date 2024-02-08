@@ -1,0 +1,6 @@
+<div *ngIf="isLoading$ | async" class="overlay">
+  <div class="loading-content">
+    <mat-progress-bar mode="determinate" [value]="progress$ | async"></mat-progress-bar>
+    <div class="loading-text">Loading...</div>
+  </div>
+</div>

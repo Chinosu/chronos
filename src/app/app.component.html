@@ -1,5 +1,7 @@
 <router-outlet></router-outlet>
 
+<app-loading></app-loading>
+
 <app-cluster-container>
   <a class="text menu-text" href="#" (click)="probabilisticRedirect()">Gamble</a>
   <a class="text menu-text" href="https://github.com/chinosu" target="_blank">GitHub</a>
@@ -30,8 +32,10 @@
 
 <div class="horizontal-stack">
   <div class="vertical-stack clamp-width">
-    <app-generic-model modelPath="assets/math_clock/scene.gltf" [size]="25"></app-generic-model>
-    <app-generic-model modelPath="assets/old_wall_clock/scene.gltf" [size]="130"></app-generic-model>
+    <app-generic-model modelPath="assets/math_clock/scene.gltf" [size]="25"
+                       (modelLoaded)="onModelLoaded()"></app-generic-model>
+    <app-generic-model modelPath="assets/old_wall_clock/scene.gltf" [size]="130"
+                       (modelLoaded)="onModelLoaded()"></app-generic-model>
   </div>
 
   <ul class="clamp-width">
@@ -74,8 +78,10 @@
   </ul>
 
   <div class="vertical-stack clamp-width">
-    <app-generic-model modelPath="assets/tabletop_clock/scene.gltf" [size]="4" [defaultRotationY]="0.4"></app-generic-model>
-    <app-generic-model modelPath="assets/wall_clock/scene.gltf" [size]="300"></app-generic-model>
+    <app-generic-model modelPath="assets/tabletop_clock/scene.gltf" [size]="4"
+                       [defaultRotationY]="0.4" (modelLoaded)="onModelLoaded()"></app-generic-model>
+    <app-generic-model modelPath="assets/wall_clock/scene.gltf" [size]="300"
+                       (modelLoaded)="onModelLoaded()"></app-generic-model>
   </div>
 </div>
 
