@@ -1,51 +1,142 @@
 <router-outlet></router-outlet>
 
-<!--<app-gravity-slider></app-gravity-slider>-->
-<!--<app-x86-loop></app-x86-loop>-->
-
 <app-cluster-container>
-  <a class="text" href="https://rroll.to/3VuDja">Gamble</a>
-  <a class="text" href="https://github.com/chinosu">GitHub</a>
+  <a class="text menu-text" href="https://rroll.to/3VuDja">Gamble</a>
+  <a class="text menu-text" href="https://github.com/chinosu" target="_blank">GitHub</a>
   <a href="https://chinosu.github.io/chronos/">
     <img ngSrc="assets/logo-black.png" alt="My Logo" height="442" width="440" class="logo">
   </a>
-  <a class="text" href="https://discordapp.com/users/611856491506434068">Discord</a>
-  <a class="text" href="https://archlinux.org">Wiki</a>
+  <a class="text menu-text" href="https://discordapp.com/users/611856491506434068" target="_blank">Discord</a>
+  <a class="text menu-text" href="https://archlinux.org" target="_blank">Wiki</a>
 </app-cluster-container>
 
-<div class="side-by-side">
-  <ul>
+<div style="display: flex; justify-content: center">
+  <iframe style="width: 100%; height: 100vh" [frameBorder]="0" title="Untitled"
+          src="https://codepen.io/nodens/embed/poYOgYm?default-tab=result&editable=true&theme-id=dark"
+          loading="lazy" allowtransparency="true">
+    See the Pen <a href="https://codepen.io/nodens/pen/poYOgYm">
+    Clock</a> by (<a href="https://codepen.io/nodens">me</a>)
+    on <a href="https://codepen.io">CodePen</a>.
+  </iframe>
+</div>
+
+<div style="height: 440px"></div>
+
+<p style="width: 100%; text-align: center;">
+  Hi, I am Tim
+</p>
+
+<div style="height: 220px"></div>
+
+<div class="horizontal-stack">
+  <div class="vertical-stack clamp-width">
+    <app-generic-model modelPath="assets/math_clock/scene.gltf" [size]="25"></app-generic-model>
+    <app-generic-model modelPath="assets/old_wall_clock/scene.gltf" [size]="130"></app-generic-model>
+  </div>
+
+  <ul class="clamp-width">
+    <p style="width: 100%; text-align: center;">
+      ───── ⋆⋅☆⋅⋆ ─────
+    </p>
+    <div style="height: 88px"></div>
     <app-left-right>
-      <p>Age</p>
+      <p class="prompt">Age</p>
       <p>19</p>
     </app-left-right>
     <app-left-right>
-      <p>Degree</p>
+      <p class="prompt">Degree</p>
       <p>Actl/CompSci</p>
     </app-left-right>
     <app-left-right>
-      <p>Year of Study</p>
+      <p class="prompt">Year of Study</p>
       <p>Second Year</p>
     </app-left-right>
     <app-left-right>
-      <p>Personality</p>
+      <p class="prompt">Personality</p>
       <p>INFJ-T</p>
     </app-left-right>
     <app-left-right>
-      <p>Ethnicity</p>
+      <p class="prompt">Ethnicity</p>
       <p>Chinese</p>
     </app-left-right>
     <app-left-right>
-      <p>Favourite Foods</p>
+      <p class="prompt">Favourite Foods</p>
       <p>Gelato & Noodles</p>
     </app-left-right>
     <app-left-right>
-      <p>Hobbies</p>
+      <p class="prompt">Hobbies</p>
       <p>Coding & Gaming</p>
     </app-left-right>
+    <div style="height: 88px"></div>
+    <p style="width: 100%; text-align: center;">
+      ───── ⋆⋅☆⋅⋆ ─────
+    </p>
   </ul>
-  <app-cube></app-cube>
+
+  <div class="vertical-stack clamp-width">
+    <app-generic-model modelPath="assets/tabletop_clock/scene.gltf" [size]="4" [defaultRotationY]="0.4"></app-generic-model>
+    <app-generic-model modelPath="assets/wall_clock/scene.gltf" [size]="300"></app-generic-model>
+  </div>
 </div>
 
-<app-phone></app-phone>
-<!--deploy command: ng deploy &#45;&#45;base-href=https://chinosu.github.io/chronos/-->
+<div style="height: 440px"></div>
+
+<h1 style="width: 100%; text-align: center;">My Projects</h1>
+
+<div style="height: 220px"></div>
+
+<ul style="display: grid; place-items: center">
+  <p style="width: 100%; text-align: center;">════ ⋆★⋆ ════</p>
+  <div style="height: 88px"></div>
+
+  <div class="project-tuple">
+    <h2 class="project-name">mips formatter</h2>
+    <p class="project-description">A program which naively formats MIPS code</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">Teyvat Passport</h2>
+    <p class="project-description">Hoyosoc's checkin and hangman modules</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">WindsongLyre</h2>
+    <p class="project-description">Locally hosted discord music bot</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">investire</h2>
+    <p class="project-description">Inventory management companion app for Warframe</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">Snakes-and-Ladders</h2>
+    <p class="project-description">Digital version of snakes and ladders</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">Remind</h2>
+    <p class="project-description">Basic reminder app</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">midi-to-ahk-converter</h2>
+    <p class="project-description">Converts midi files to AutoHotkey files which target a virtual piano website</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">pianista</h2>
+    <p class="project-description">User-controlled piano player</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">qRaffle</h2>
+    <p class="project-description">Genshin Impact themed raffle program</p>
+  </div>
+  <div class="project-tuple">
+    <h2 class="project-name">drift</h2>
+    <p class="project-description">Warframe assistant for 7x3 Eidolon speed running</p>
+  </div>
+
+  <div style="height: 88px"></div>
+  <p style="width: 100%; text-align: center;">════ ⋆★⋆ ════</p>
+</ul>
+
+
+<div style="height: 177px"></div>
+
+<app-cube></app-cube>
+<!--deploy command: -->
+<!--ng deploy &#45;&#45;base-href=https://chinosu.github.io/chronos/-->

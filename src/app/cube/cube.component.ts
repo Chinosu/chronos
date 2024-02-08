@@ -12,9 +12,9 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
   private canvasRef!: ElementRef;
 
   //* Cube Properties
-  @Input() public rotationSpeedX: number = 0.03;
-  @Input() public rotationSpeedY: number = 0.02;
-  @Input() public rotationMultiplier: number = 2;
+  @Input() public rotationSpeedX: number = 0.015;
+  @Input() public rotationSpeedY: number = 0.01;
+  @Input() public rotationMultiplier: number = 2
   @Input() public size: number = 2;
   @Input() public texture: string = "assets/society_logo.jpg";
 
@@ -49,7 +49,6 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
    * @memberof CubeComponent
    */
   private animateCube() {
-    console.log(this.mouseUp)
     if (this.mouseUp) {
       this.rotationVelocityX *= 0.95;
       this.rotationVelocityY *= 0.95;
@@ -183,9 +182,15 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   @HostListener('window:resize', ['$event'])
-  onWindowResize(event: Event) {
-    this.camera.aspect = this.getAspectRatio();
+  onWindowResize(_: Event) {
+    this.updateCanvasSize();
+  }
+
+  private updateCanvasSize() {
+    const width = this.canvas.clientWidth;
+    const height = this.canvas.clientHeight;
+    this.renderer.setSize(width, height);
+    this.camera.aspect = width / height
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
   }
 }

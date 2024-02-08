@@ -3,15 +3,53 @@ p {
   font-family: "Cascadia Code", monospace;
 }
 
-.side-by-side {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+h1 {
+  color: white;
+  font-family: "Cascadia Code", monospace;
 }
 
+h2 {
+  color: white;
+  font-family: "Cascadia Code", monospace;
+}
+
+.clamp-width {
+  max-width: 33vw;
+}
+
+.horizontal-stack {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 10px;
+  align-items: center;
+}
+
+.vertical-stack {
+  display: grid;
+  grid-auto-flow: row;
+  grid-row-gap: 10px;
+}
+
+.project-tuple {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+.project-name {
+  width: 200px;
+  text-align: right;
+}
+.project-description {
+  width: 200px;
+  color: lightgray;
+}
+
+
+
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 
 .text {
@@ -19,6 +57,13 @@ p {
   font-family: "Cascadia Code", monospace;
 }
 
-.test {
-  color: blue;
+.prompt {
+  color: lightslategray;
 }
+
+.menu-text {
+  color: lightgray;
+  text-decoration: none;
+  font-size: 80%;
+}
+
