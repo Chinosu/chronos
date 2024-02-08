@@ -145,8 +145,10 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
 
       currentTime = performance.now();
       deltaTime = currentTime - lastTime;
-      this.rotationVelocityX = (deltaY * 5) / deltaTime;
-      this.rotationVelocityY = (deltaX * 5) / deltaTime;
+      if (deltaTime != 0) {
+        this.rotationVelocityX = (deltaY * 5) / deltaTime;
+        this.rotationVelocityY = (deltaX * 5) / deltaTime;
+      }
 
       this.cube.rotation.y += deltaX * 0.02;
       this.cube.rotation.x += deltaY * 0.02;
