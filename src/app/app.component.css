@@ -1,10 +1,20 @@
 p {
   color: white;
+  font-family: "Cascadia Code", monospace;
 }
 
 .side-by-side {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
+}
 
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.text {
+  color: white;
+  font-family: "Cascadia Code", monospace;
 }
