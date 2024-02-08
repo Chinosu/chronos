@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, HostListener, OnDestroy} from '@angular/core';
 import * as THREE from "three";
 
 @Component({
@@ -7,7 +7,7 @@ import * as THREE from "three";
   standalone: true,
   styleUrls: ['./cube.component.scss']
 })
-export class CubeComponent implements OnInit, AfterViewInit {
+export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
 
@@ -168,5 +168,16 @@ export class CubeComponent implements OnInit, AfterViewInit {
     this.createScene();
     this.startRenderingLoop();
     this.addMouseControls();
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.onWindowResize);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: Event) {
+    this.camera.aspect = this.getAspectRatio();
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
   }
 }

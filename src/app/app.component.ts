@@ -5,13 +5,14 @@ import {X86LoopComponent} from "./x86-loop/x86-loop.component";
 import {TopMenuComponent} from "./top-menu/top-menu.component";
 import {CubeComponent} from "./cube/cube.component";
 import {PhoneComponent} from "./phone/phone.component";
+import {LeftRightComponent} from "./left-right/left-right.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [
     RouterOutlet, GravitySliderComponent, X86LoopComponent,
-    TopMenuComponent, CubeComponent, PhoneComponent
+    TopMenuComponent, CubeComponent, PhoneComponent, LeftRightComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

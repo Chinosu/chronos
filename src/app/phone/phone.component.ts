@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild, OnDestroy, HostListener} from '@angular/core';
 import {GLTFLoader} from "three/examples/jsm/loaders/GLTFLoader.js";
 import * as THREE from "three";
 
@@ -8,7 +8,7 @@ import * as THREE from "three";
   standalone: true,
   styleUrls: ['./phone.component.scss']
 })
-export class PhoneComponent implements OnInit, AfterViewInit {
+export class PhoneComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('canvas')
   private canvasRef!: ElementRef;
 
@@ -160,5 +160,16 @@ export class PhoneComponent implements OnInit, AfterViewInit {
     this.createScene();
     this.startRenderingLoop();
     this.addMouseControls();
+  }
+
+  ngOnDestroy() {
+    window.removeEventListener('resize', this.onWindowResize);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize(event: Event) {
+    this.camera.aspect = this.getAspectRatio();
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
   }
 }
