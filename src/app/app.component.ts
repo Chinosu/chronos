@@ -26,7 +26,8 @@ export class AppComponent implements OnInit {
 
   onModelLoaded() {
     this.loadedCount += 1;
-    this.loadingService.setProgress(this.loadedCount / this.loadedCount * 100)
+    this.loadingService.setProgress(this.loadedCount / this.modelCount * 100)
+
     if (this.modelCount !== this.loadedCount) return;
     this.loadingService.hide();
   }
