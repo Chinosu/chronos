@@ -1,0 +1,8 @@
+Model Information:
+* title:	Tabletop clock (1670)
+* source:	https://sketchfab.com/3d-models/tabletop-clock-1670-c5d25a4967894a1683afeb3533658d5b
+* author:	Virtual Museums of Małopolska (https://sketchfab.com/WirtualneMuzeaMalopolski)
+
+Model License:
+* license type:	CC0-1.0 (http://creativecommons.org/publicdomain/zero/1.0/)
+* requirements:	Credit is not mandatory. Commercial use is allowed.
