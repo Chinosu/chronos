@@ -13,7 +13,7 @@
   justify-content: center;
   grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
 
-  /*border: 1px solid #ccc;*/
+  border: 1px solid #ccc;
 }
 
 .item {

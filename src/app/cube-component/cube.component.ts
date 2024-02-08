@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as THREE from "three";
-import {OrbitControls} from "three/examples/jsm/controls/OrbitControls";
 
 @Component({
   selector: 'app-cube',
@@ -17,7 +16,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
   @Input() public rotationSpeedX: number = 0.05;
   @Input() public rotationSpeedY: number = 0.02;
   @Input() public size: number = 200;
-  @Input() public texture: string = "/assets/society_logo.jpg";
+  @Input() public texture: string = "assets/society_logo.jpg";
 
 
   //* Stage Properties
@@ -46,12 +45,9 @@ export class CubeComponent implements OnInit, AfterViewInit {
    * @memberof CubeComponent
    */
   private animateCube() {
-    // this.controls.update();
     this.cube.rotation.x += this.rotationSpeedX;
     this.cube.rotation.y += this.rotationSpeedY;
   }
-
-  private controls!: OrbitControls;
 
   /**
    * Create the scene
@@ -64,6 +60,12 @@ export class CubeComponent implements OnInit, AfterViewInit {
     this.scene = new THREE.Scene();
     this.scene.background = new THREE.Color(0x000000)
     this.scene.add(this.cube);
+    //* Lighting
+    const ambientLight = new THREE.AmbientLight(0x404040);
+    this.scene.add(ambientLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(0, 1, 1);
+    this.scene.add(directionalLight);
     //* Camera
     let aspectRatio = this.getAspectRatio();
     this.camera = new THREE.PerspectiveCamera(
@@ -73,12 +75,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
       this.farClippingPlane
     )
     this.camera.position.z = this.cameraZ;
-    //* Lighting
-    const ambientLight = new THREE.AmbientLight(0x404040);
-    this.scene.add(ambientLight);
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-    directionalLight.position.set(0, 1, 1);
-    this.scene.add(directionalLight);
+
   }
 
   private getAspectRatio() {
@@ -97,12 +94,6 @@ export class CubeComponent implements OnInit, AfterViewInit {
     this.renderer = new THREE.WebGLRenderer({ canvas: this.canvas });
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.canvas.clientWidth, this.canvas.clientHeight);
-
-    //* Initialize OrbitControls
-    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
-    this.controls.enableDamping = true;
-    this.controls.dampingFactor = 0.25;
-    this.controls.screenSpacePanning = false;
 
     let component: CubeComponent = this;
     (function render() {
