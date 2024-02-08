@@ -14,7 +14,7 @@ export class CubeComponent implements OnInit, AfterViewInit {
   //* Cube Properties
   @Input() public rotationSpeedX: number = 0.03;
   @Input() public rotationSpeedY: number = 0.02;
-  @Input() public size: number = 200;
+  @Input() public size: number = 2;
   @Input() public texture: string = "assets/society_logo.jpg";
 
   //* Stage Properties
@@ -89,6 +89,8 @@ export class CubeComponent implements OnInit, AfterViewInit {
     )
     this.camera.position.z = this.cameraZ;
 
+    //* Cube size
+    this.cube.scale.set(this.size, this.size, this.size);
   }
 
   private getAspectRatio() {

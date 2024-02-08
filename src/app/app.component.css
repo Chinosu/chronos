@@ -3,6 +3,8 @@ li {
 }
 
 .side-by-side {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+
 }
