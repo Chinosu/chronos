@@ -14,7 +14,7 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
   //* Cube Properties
   @Input() public rotationSpeedX: number = 0.015;
   @Input() public rotationSpeedY: number = 0.01;
-  @Input() public rotationMultiplier: number = 2
+  @Input() public rotationMultiplier: number = 0.5;
   @Input() public size: number = 2;
   @Input() public texture: string = "assets/society_logo.jpg";
 
@@ -50,8 +50,8 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   private animateCube() {
     if (this.mouseUp) {
-      this.rotationVelocityX *= 0.95;
-      this.rotationVelocityY *= 0.95;
+      this.rotationVelocityX *= 0.99;
+      this.rotationVelocityY *= 0.99;
 
       if (Math.abs(this.rotationVelocityX) < 0.001) this.rotationVelocityX = 0;
       if (Math.abs(this.rotationVelocityY) < 0.001) this.rotationVelocityY = 0;
@@ -151,8 +151,8 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
       currentTime = performance.now();
       deltaTime = currentTime - lastTime;
       if (deltaTime != 0) {
-        this.rotationVelocityX = (deltaY * 5) / deltaTime;
-        this.rotationVelocityY = (deltaX * 5) / deltaTime;
+        this.rotationVelocityX = (deltaY * 0.05) / deltaTime;
+        this.rotationVelocityY = (deltaX * 0.05) / deltaTime;
       }
 
       this.cube.rotation.y += deltaX * 0.02;
