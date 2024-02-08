@@ -18,4 +18,15 @@ import {GenericModelComponent} from "./generic-model/generic-model.component";
 })
 export class AppComponent {
   title = 'chronos';
+
+  probabilisticRedirect() {
+    const lucky = 'https://www.csesoc.unsw.edu.au';
+    const unlucky = 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+
+    if (Math.random() < 0.1) {
+      window.open(lucky, '_blank');
+    } else {
+      window.open(unlucky, '_blank');
+    }
+  }
 }
