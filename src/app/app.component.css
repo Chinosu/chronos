@@ -18,3 +18,7 @@ p {
   color: white;
   font-family: "Cascadia Code", monospace;
 }
+
+.test {
+  color: blue;
+}
