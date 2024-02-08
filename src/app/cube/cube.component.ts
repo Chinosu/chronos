@@ -14,6 +14,7 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
   //* Cube Properties
   @Input() public rotationSpeedX: number = 0.03;
   @Input() public rotationSpeedY: number = 0.02;
+  @Input() public rotationMultiplier: number = 2;
   @Input() public size: number = 2;
   @Input() public texture: string = "assets/society_logo.jpg";
 
@@ -26,7 +27,7 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
   //* Inertia properties
   private rotationVelocityX = 0;
   private rotationVelocityY = 0;
-  private mouseUp = false;
+  private mouseUp = true;
 
   //? Helper Properties (Private Properties);
   private camera!: THREE.PerspectiveCamera;
@@ -48,6 +49,7 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
    * @memberof CubeComponent
    */
   private animateCube() {
+    console.log(this.mouseUp)
     if (this.mouseUp) {
       this.rotationVelocityX *= 0.95;
       this.rotationVelocityY *= 0.95;
@@ -57,9 +59,13 @@ export class CubeComponent implements OnInit, AfterViewInit, OnDestroy {
 
       this.cube.rotation.x += this.rotationVelocityX;
       this.cube.rotation.y += this.rotationVelocityY;
+
+      this.cube.rotation.x += this.rotationSpeedX;
+      this.cube.rotation.y += this.rotationSpeedY;
+    } else {
+      this.cube.rotation.x += this.rotationSpeedX * this.rotationMultiplier;
+      this.cube.rotation.y += this.rotationSpeedY * this.rotationMultiplier;
     }
-    this.cube.rotation.x += this.rotationSpeedX;
-    this.cube.rotation.y += this.rotationSpeedY;
   }
 
   /**
