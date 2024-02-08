@@ -13,11 +13,10 @@ export class CubeComponent implements OnInit, AfterViewInit {
   private canvasRef!: ElementRef;
 
   //* Cube Properties
-  @Input() public rotationSpeedX: number = 0.05;
+  @Input() public rotationSpeedX: number = 0.03;
   @Input() public rotationSpeedY: number = 0.02;
   @Input() public size: number = 200;
   @Input() public texture: string = "assets/society_logo.jpg";
-
 
   //* Stage Properties
   @Input() public cameraZ: number = 400;
@@ -103,10 +102,41 @@ export class CubeComponent implements OnInit, AfterViewInit {
     }());
   }
 
+  /**
+   * Add toggled mouse move and mouse up listeners
+   *
+   * @private
+   * @memberof CubeComponent
+   */
+  private addMouseControls() {
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    const mouseDown = (event: MouseEvent) => {
+      lastMouseX = event.clientX;
+      lastMouseY = event.clientY;
+      document.addEventListener('mousemove', mouseMove);
+      document.addEventListener('mouseup', mouseUp);
+    };
+    const mouseMove = (event: MouseEvent) => {
+      const deltaX = event.clientX - lastMouseX;
+      const deltaY = event.clientY - lastMouseY;
+      this.cube.rotation.y += deltaX * 0.02;
+      this.cube.rotation.x += deltaY * 0.02;
+      lastMouseX = event.clientX;
+      lastMouseY = event.clientY;
+    };
+    const mouseUp = () => {
+      document.removeEventListener('mousemove', mouseMove);
+      document.removeEventListener('mouseup', mouseUp);
+    };
+    this.renderer.domElement.addEventListener('mousedown', mouseDown);
+  }
+
   ngOnInit(): void {}
 
   ngAfterViewInit() {
     this.createScene();
     this.startRenderingLoop();
+    this.addMouseControls();
   }
 }
