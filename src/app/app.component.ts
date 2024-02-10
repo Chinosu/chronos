@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {CubeComponent} from "./cube/cube.component";
 import {LeftRightComponent} from "./left-right/left-right.component";
-import {NgOptimizedImage} from "@angular/common";
+import {NgIf, NgOptimizedImage} from "@angular/common";
 import {ClusterContainerComponent} from "./cluster-container/cluster-container.component";
 import {GenericModelComponent} from "./generic-model/generic-model.component";
 import {LoadingService} from "./loading.service";
@@ -13,13 +13,14 @@ import {LoadingComponent} from "./loading/loading.component";
   standalone: true,
   imports: [
     RouterOutlet, CubeComponent, LeftRightComponent,
-    NgOptimizedImage, ClusterContainerComponent, GenericModelComponent, LoadingComponent
+    NgOptimizedImage, ClusterContainerComponent, GenericModelComponent, LoadingComponent, NgIf
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
   title = 'chronos';
+  mobileDevice = false;
 
   private modelCount = 4;
   private loadedCount = 0;
@@ -44,6 +45,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+    if (window.innerWidth < 768 || 'ontouchstart' in window) {
+      this.mobileDevice = true;
+    }
     this.loadingService.show();
   }
 

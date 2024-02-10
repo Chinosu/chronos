@@ -17,6 +17,17 @@ h2 {
   max-width: 33vw;
 }
 
+.mobile-warning {
+  background-color: lightgray;
+  padding: 25px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-family: "Cascadia Code", monospace;
+}
+
 .horizontal-stack {
   display: grid;
   grid-auto-flow: column;
@@ -44,8 +55,6 @@ h2 {
   width: 200px;
   color: lightgray;
 }
-
-
 
 .logo {
   width: 30px;

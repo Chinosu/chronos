@@ -1,5 +1,9 @@
 <router-outlet></router-outlet>
 
+<div *ngIf="mobileDevice" class="mobile-warning">
+  This website is optimised for desktop devices. For the best experience, please view on a computer.
+</div>
+
 <app-loading></app-loading>
 
 <app-cluster-container>
